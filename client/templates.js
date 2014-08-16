@@ -45,7 +45,7 @@
 
     // pages/personView.jade compiled template
     templatizer["pages"]["personView"] = function tmpl_pages_personView() {
-        return '<h1 role="name"></h1>';
+        return '<div><h1 role="name"></h1><div class="btn-group"><button role="action-play" class="btn btn-default">play (<span role="dumpPlayhead"> </span>s)</button><button href="#" role="action-stop" class="btn btn-danger">stop</button></div><div class="panel"><div class="panel-body"><span role="dump"></span></div></div></div>';
     };
 
     // pages/playlist.jade compiled template

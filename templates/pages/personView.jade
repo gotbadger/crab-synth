@@ -1,1 +1,11 @@
-h1(role='name')
+div
+    h1(role='name')
+
+    div.btn-group
+        button.btn.btn-default(role="action-play") play (
+            span(role='dumpPlayhead') 
+            |s)
+        button.btn.btn-danger(href="#", role="action-stop") stop
+    div.panel
+        div.panel-body
+            span(role='dump')

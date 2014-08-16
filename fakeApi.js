@@ -5,13 +5,13 @@ var people = [
         id: 'ANA110413019A_rdata',
         setName: 'ANA1104130',
         experimentName: '19A',
-        data: {}
+        data: require('./data/ANA110413019A_rdata.json')
     },
-        {
+    {
         id: 'ANA110413026A_rdata',
         setName: 'ANA1104130',
         experimentName: '26A',
-        data: {}
+        data: require('./data/ANA110413026A_rdata.json')
     },
 ];
 
