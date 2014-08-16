@@ -23,6 +23,11 @@
         return '<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0"/><meta name="apple-mobile-web-app-capable" content="yes"/>';
     };
 
+    // includes/experiment.jade compiled template
+    templatizer["includes"]["experiment"] = function tmpl_includes_experiment() {
+        return '<li class="person list-group-item"><!--img(role="avatar", width="40", height="40")--><a role="name"></a><span class="btn-group pull-right"> <!--a.btn.btn-default(role="action-edit") play --><!--a.btn.btn-danger(href="#", role="action-delete") delete--></span></li>';
+    };
+
     // includes/formInput.jade compiled template
     templatizer["includes"]["formInput"] = function tmpl_includes_formInput() {
         return '<div class="form-group"><label role="label"></label><div role="message-container"><div role="message-text" class="alert alert-danger"></div></div><input class="form-control"/></div>';
@@ -36,6 +41,11 @@
     // pages/listen.jade compiled template
     templatizer["pages"]["listen"] = function tmpl_pages_listen() {
         return '<section class="page view-person"><h2 role="name"></h2><img role="avatar" width="80" height="80"/><div class="buttons"><a role="edit" class="btn">Edit</a><button role="delete" class="btn">Delete</button></div></section>';
+    };
+
+    // pages/personView.jade compiled template
+    templatizer["pages"]["personView"] = function tmpl_pages_personView() {
+        return '<h1 role="name"></h1>';
     };
 
     // pages/playlist.jade compiled template

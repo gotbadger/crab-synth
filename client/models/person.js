@@ -4,22 +4,22 @@ var AmpersandModel = require('ampersand-model');
 module.exports = AmpersandModel.extend({
     props: {
         id: 'any',
-        firstName: ['string', true, ''],
-        lastName: ['string', true, ''],
-        coolnessFactor: ['number', true, 5]
+        setName: ['string', true, ''],
+        experimentName: ['string', true, '']
+        //coolnessFactor: ['number', true, 5]
     },
     session: {
         selected: ['boolean', true, false]
     },
     derived: {
         fullName: {
-            deps: ['firstName', 'lastName'],
+            deps: ['setName', 'experimentName'],
             fn: function () {
-                return this.firstName + ' ' + this.lastName;
+                return this.setName + ' (' + this.experimentName+ ')';
             }
         },
         avatar: {
-            deps: ['firstName', 'lastName'],
+            deps: ['setName', 'experimentName'],
             fn: function () {
                 return 'http://robohash.org/' + encodeURIComponent(this.fullName) + '?size=80x80';
             }
