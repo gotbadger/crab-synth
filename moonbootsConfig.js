@@ -29,6 +29,7 @@ module.exports = {
         // order you provide them. So for example, if you're using jQuery make sure
         // you list any plugins after jQuery itself.
         libraries: [
+            __dirname + '/timbre.dev.js',
         ],
         // Specify the stylesheets we want to bundle
         stylesheets: [

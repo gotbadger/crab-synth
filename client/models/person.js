@@ -17,11 +17,19 @@ module.exports = AmpersandModel.extend({
     },
     derived: {
         dump: {
-            deps: ['data','playhead'],
+            deps: ['playhead'],
             fn: function(){
                 lookup = this.data[(this.playhead/10)];
                 if(lookup !== undefined){
                     this.playing = lookup;
+                }
+                //console.log(this.playing.value1);
+                if(this.playhead>0){
+                    me.synth.play('C3',this.playing.value3);
+                    me.synth.play('D3',this.playing.value2);
+                    me.synth.play('G3',this.playing.value1);
+                }else{
+                    me.synth.stop();
                 }
                 return JSON.stringify(this.playing,0,2);
             }
@@ -61,6 +69,7 @@ module.exports = AmpersandModel.extend({
         if(this.ticker){
             clearInterval(this.ticker);
         }
+        this.playhead = 0;
         console.log("stop ticking");
     },
     startTick: function(){
@@ -69,9 +78,9 @@ module.exports = AmpersandModel.extend({
             this.stopTick();
         }
         this.ticker = setInterval(function(){
-            console.log("move playhead");
+            //console.log("move playhead");
             self.playhead++;
-        }, 1000 );
+        }, 100 );
 
         console.log("start ticking"); 
     },
