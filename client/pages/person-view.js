@@ -1,6 +1,7 @@
 /*global app, alert*/
 var PageView = require('./base');
 var templates = require('../templates');
+var Person = require('../models/person')
 
 
 module.exports = PageView.extend({
@@ -34,10 +35,8 @@ module.exports = PageView.extend({
     },
     initialize: function (spec) {
         var self = this;
-        app.people.getOrFetch(spec.id, {all: true}, function (err, model) {
-            if (err) alert('couldnt find a model with id: ' + spec.id);
-            self.model = model;
-        });
+        self.model = new Person({id:spec.id});
+        self.model.fetch();
     },
     handleDeleteClick: function () {
         this.model.destroy({success: function () {

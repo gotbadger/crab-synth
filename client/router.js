@@ -23,7 +23,7 @@ module.exports = Router.extend({
     home: function () {
         this.trigger('page', new Playlist({
             model: me,
-            collection: app.people
+            collection: app.peoplelight
         }));
     },
 

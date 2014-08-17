@@ -3,6 +3,7 @@ var _ = require('underscore');
 
 
 module.exports = AmpersandModel.extend({
+    urlRoot: '/api/people',
     props: {
         id: 'any',
         setName: ['string', true, ''],
@@ -17,8 +18,11 @@ module.exports = AmpersandModel.extend({
     },
     derived: {
         dump: {
-            deps: ['playhead'],
+            deps: ['playhead','data'],
             fn: function(){
+                if(this.data === undefined){
+                    return "LOADING....";
+                }
                 lookup = this.data[(this.playhead/10)];
                 if(lookup !== undefined){
                     this.playing = lookup;

@@ -15,9 +15,10 @@ var people = [
     //     data: require('./data/ANA110413026A_rdata.json')
     // },
 ];
-
+var peoplelight = [];
 var datafiles = fs.readdirSync(__dirname+'/data');
 
+//eurg
 _.each(datafiles,function(elm){
     var fileinfo = elm.split('.').reverse();
     if(fileinfo[0] === 'json'){
@@ -25,6 +26,12 @@ _.each(datafiles,function(elm){
         set.id = fileinfo[1];
         console.log("Loaded: "+elm);
         people.push(set);
+        var lightset = {
+            id: set.id,
+            setName: set.setName,
+            experimentName: set.experimentName
+        };
+        peoplelight.push(lightset);
     }
 })
 
@@ -39,12 +46,18 @@ exports.version = '0.0.0';
 exports.register = function (plugin, options, next) {
     plugin.route({
         method: 'GET',
+        path: '/api/peoplelight',
+        handler: function (request, reply) {
+            reply(peoplelight);
+        }
+    });
+    plugin.route({
+        method: 'GET',
         path: '/api/people',
         handler: function (request, reply) {
             reply(people);
         }
     });
-
     // plugin.route({
     //     method: 'POST',
     //     path: '/api/people',
@@ -60,6 +73,7 @@ exports.register = function (plugin, options, next) {
         method: 'GET',
         path: '/api/people/{id}',
         handler: function (request, reply) {
+            //console.log('called get individual');
             var found = getExperiment(request.params.id);
             reply(found).code(found ? 200 : 404);
         }
