@@ -80,7 +80,7 @@ module.exports = AmpersandModel.extend({
         this.ticker = setInterval(function(){
             //console.log("move playhead");
             self.playhead++;
-        }, 100 );
+        }, me.rate );
 
         console.log("start ticking"); 
     },

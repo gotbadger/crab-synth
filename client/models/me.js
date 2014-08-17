@@ -10,6 +10,7 @@ module.exports = AmpersandModel.extend({
         lastName: ['string', true, ''],
         username: ['string'],
         synth: 'any',
+        rate: ['int',true,100]
     },
     initialize: function(){
         this.synth = new CrabSynth();
