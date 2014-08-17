@@ -1,5 +1,6 @@
 var Hapi = require('hapi');
 var config = require('getconfig');
+config.http.port = process.env.PORT || config.http.port;
 var server = new Hapi.Server('localhost', config.http.port);
 var moonbootsConfig = require('./moonbootsConfig');
 var fakeApi = require('./fakeApi');

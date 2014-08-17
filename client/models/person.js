@@ -29,6 +29,7 @@ module.exports = AmpersandModel.extend({
                 }
                 //console.log(this.playing.value1);
                 if(this.playhead>0){
+                    console.log(_.without(_.keys(this.playing),'time'));
                     me.synth.play('C3',this.playing.value3);
                     me.synth.play('D3',this.playing.value2);
                     me.synth.play('G3',this.playing.value1);
