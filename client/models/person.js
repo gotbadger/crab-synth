@@ -29,10 +29,15 @@ module.exports = AmpersandModel.extend({
                 }
                 //console.log(this.playing.value1);
                 if(this.playhead>0){
-                    console.log(_.without(_.keys(this.playing),'time'));
-                    me.synth.play('C3',this.playing.value3);
-                    me.synth.play('D3',this.playing.value2);
-                    me.synth.play('G3',this.playing.value1);
+                    var keysnotes = (_.keys(me.synth.notemap));
+                    var keysdata = (_.without(_.keys(this.playing),'time'));
+                    var self = this;
+                    _.each(keysdata,function(elm,i){
+                        me.synth.play(keysnotes[i],self.playing[elm]);
+                    });
+                    //me.synth.play('C3',this.playing.value3);
+                    //me.synth.play('D3',this.playing.value2);
+                    //me.synth.play('G3',this.playing.value1);
                 }else{
                     me.synth.stop();
                 }

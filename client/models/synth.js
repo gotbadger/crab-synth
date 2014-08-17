@@ -15,14 +15,23 @@ module.exports = AmpersandModel.extend({
         'G3': 493,
         'C4': 523,
         'D4': 587,
-        'E4': 649
+        'E4': 649,
+        'SUB1': 100,
+        'SUB2': 90,
+        'SUB3': 80,
+        'SUB4': 70,
+        'SUB5': 60,
+        'SUB6': 50,
+        'SUB7': 40,
+        'SUB8': 30,
+        'SUB9': 20,
     },
     initialize: function(){
         //this.s = window.T("OscGen", {wave:"sin", mul:0.25}).play();
         console.log("synth init!");
     },
     play:function(note,mod){
-        console.log(arguments);
+        //console.log(arguments);
         if(!this[note]){
             this[note] = T("sin", {freq:880, mul:0.2}).play();
         }
@@ -32,6 +41,9 @@ module.exports = AmpersandModel.extend({
         freq+=(mod*1);
         //console.log(freq);
         this[note].freq.value = freq*1;
+    },
+    tick: function(){
+
     },
     stop:function(){
         console.log("stopping synth");
